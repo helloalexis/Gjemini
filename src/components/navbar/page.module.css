@@ -1,0 +1,263 @@
+.container {
+  display: unset;
+  font-size: 13pt;
+  color: unset;
+}
+
+.desktopNavContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15%;
+  background: #0051f4;
+  color: white;
+  box-shadow: 0px 15px 10px -15px #111;
+  position: relative;
+  z-index: 100;
+  position: sticky;
+  top: 0;
+  height: 64px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 16pt;
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  margin-left: 5px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.desktopNavContainer .link {
+  background-image: linear-gradient(#fca311 0 0);
+  background-size: 0% 3px;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  transition: background-size 0.2s;
+}
+
+.desktopNavContainer .link:hover {
+  background-size: 100% 3px;
+}
+
+.navContactLink {
+  background: #fca311;
+  border: 1px solid #fca311;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  transition: all 0.2s;
+}
+
+.navContactLink:hover,
+.navContactLink:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #fca311;
+}
+
+.navContactLink:active {
+  opacity: 0.5;
+}
+
+.navIconFive {
+  width: 35px;
+  height: 30px;
+  margin: 10px 10px;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+.navIconFive span {
+  background-color: #fff;
+  position: absolute;
+  border-radius: 2px;
+  transition: 0.3s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  width: 100%;
+  height: 4px;
+  transition-duration: 500ms;
+}
+.navIconFive span:nth-child(1) {
+  top: 0px;
+  left: 0px;
+}
+.navIconFive span:nth-child(2) {
+  top: 13px;
+  left: 0px;
+  opacity: 1;
+}
+.navIconFive span:nth-child(3) {
+  bottom: 0px;
+  left: 0px;
+}
+.navIconFive:not(.open):hover span:nth-child(1) {
+  transform: rotate(-3deg) scaleY(1.1);
+}
+.navIconFive:not(.open):hover span:nth-child(2) {
+  transform: rotate(3deg) scaleY(1.1);
+}
+.navIconFive:not(.open):hover span:nth-child(3) {
+  transform: rotate(-4deg) scaleY(1.1);
+}
+
+.navIconFive.open span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 13px;
+}
+.navIconFive.open span:nth-child(2) {
+  opacity: 0;
+}
+.navIconFive.open span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 13px;
+}
+
+@media screen and (min-width: 1151px) {
+  .navIconFive {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .links {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .secThreeContainer:first-child {
+    text-align: center;
+    flex-direction: column-reverse;
+  }
+
+  .secThreeContainer:last-child {
+    text-align: center;
+    flex-direction: column-reverse;
+  }
+
+  .secThreeContainer div {
+    width: 100%;
+  }
+
+  .secThreeContainer .secThreeImage {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .desktopNavContainer {
+    padding: 0 5%;
+    height: 60px;
+  }
+}
+
+.mobileNavContainer {
+  position: fixed;
+  z-index: 99;
+}
+
+.mobileNavContainer .mobileLinks {
+  font-size: 14pt;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #0051f4;
+  width: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.mobileNavContainer a:first-child {
+  margin-top: 5%;
+}
+
+.mobileNavContainer a {
+  margin-left: 15%;
+  margin-bottom: 5%;
+  padding: 0 0 15px 0;
+}
+
+.mobileNavContainer:not(.active) .mobileLinks {
+  height: 100vh;
+  width: 95%;
+}
+
+.mobileSignOutBtn {
+  text-align: left;
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  color: inherit;
+  cursor: pointer;
+  font-size: 13pt;
+  margin-left: 15%;
+  margin-bottom: 3%;
+  font-weight: 400;
+  font-size: 14pt;
+}
+
+.desktopSignOutBtn {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  color: inherit;
+  cursor: pointer;
+  font-size: 13pt;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 1151px) {
+  .mobileNavContainer .mobileLinks {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .mobileNavContainer:not(.active) .mobileLinks {
+    height: 100vh;
+    width: 85%;
+  }
+
+}
+
+@media screen and (max-width: 414px) {
+  .mobileNavContainer a,
+  .desktopSignOutBtn,
+  .mobileSignOutBtn {
+    margin-left: 5%;
+  }
+
+  
+.mobileNavContainer:not(.active) .mobileLinks {
+  height: 100vh;
+  width: 95%;
+}
+}

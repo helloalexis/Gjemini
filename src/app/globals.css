@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  line-height: 150%;
+}
+
+html,
+body {
+  max-width: 100vw;
+  color: #bbb;
+  scroll-behavior: smooth;
+  font-size: 13pt;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  min-height: 100vh;
+  max-width: 1920px;
+
+}
+
