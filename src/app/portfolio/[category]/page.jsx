@@ -4,21 +4,14 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { Helmet } from "react-helmet";
+import useSWR from "swr";
+import { useSearchParams } from "next/navigation";
 
-async function getData() {
-  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/projects", {
-    cache: "no-store",
-  });
+const Category = () => {
+   const searchParams = useSearchParams();
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-}
-
-const Category = async ({ searchParams }) => {
-  const data = await getData();
-
+  const { data} = useSWR("/api/projects", fetcher);
   return (
     <div className={styles.container}>
       <>
@@ -30,7 +23,8 @@ const Category = async ({ searchParams }) => {
       <div className={styles.galleryContainer}>
         {data?.map((item) => {
           if (
-            searchParams.search.toLowerCase() == item.category.toLowerCase()
+            searchParams.get("search").toLowerCase() ==
+            item.category.toLowerCase()
           ) {
             return (
               <div className={styles.card} key={item._id}>
