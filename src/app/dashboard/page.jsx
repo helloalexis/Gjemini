@@ -155,7 +155,7 @@ const Dashboard = () => {
         <>
           <Helmet>
             <meta charSet="utf-8" />
-            <title>Gjemini Dashboard</title>
+            <title>Dashboard</title>
           </Helmet>
         </>
         <h1 className={styles.sectionTitle}>Your Featured Projects</h1>
