@@ -25,19 +25,6 @@ const Dashboard = () => {
     fetcher
   );
 
-  const [data, setData] = useState(null);
-  const [isLoading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    fetch(process.env.NEXT_PUBLIC_API_URL + "/api/projectCategory")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      });
-  }, []);
-
   if (session.status === "loading") {
     return <p>loading...</p>;
   }
@@ -260,7 +247,7 @@ const Dashboard = () => {
                 <option value="DEFAULT" disabled>
                   Select Project Category
                 </option>
-                {data?.map((item) => (
+                {categoryData?.map((item) => (
                   <option value={item.category} key={item._id}>
                     {item.category}
                   </option>
