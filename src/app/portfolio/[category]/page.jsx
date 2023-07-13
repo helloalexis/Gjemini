@@ -5,13 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Helmet } from "react-helmet";
 
-export const metadata = {
-  title: "Gemini Projects",
-  description: "This is Projects Page",
-};
-
 async function getData() {
-  
   const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/projects", {
     cache: "no-store",
   });

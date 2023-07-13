@@ -6,11 +6,6 @@ import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 
 
-export const metadata = {
-  title: "Gemini Login",
-  description: "This is Login Page",
-};
-
 const Login = () => {
   const router = useRouter();
   const session = useSession();
