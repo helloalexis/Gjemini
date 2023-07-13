@@ -5,8 +5,7 @@ import Hero from "public/hero-img.jpg";
 import Link from "next/link";
 import React, { useRef } from "react";
 import useSWR from "swr";
-import {Helmet} from "react-helmet"
-
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const msgRef = useRef();
@@ -35,7 +34,9 @@ const Home = () => {
   }
 
   function clearInputField() {
-    msgRef.current.reset();
+    setTimeout(() => {
+      msgRef.current.reset();
+    }, 100);
   }
 
   return (
