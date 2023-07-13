@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { signIn, useSession, SessionProvider } from "next-auth/react";
 import useSWR from "swr";
 import Image from "next/image";
-import Link from "next/link";
+import { Helmet } from "react-helmet";
 
 export const metadata = {
   title: "Gemini Dashboard",
@@ -43,13 +43,18 @@ const Dashboard = () => {
       });
   }, []);
 
-  if (session.status === "loading") {
-    return <p>loading...</p>;
-  }
+   if (session.status === "loading") {
+       return <p>loading...</p>;
+     }
 
-  if (session.status === "unauthenticated") {
-    router?.push("/login");
-  }
+     if (session.status === "unauthenticated") {
+        setTimeout(() => {
+          router?.push("/login");
+        }, 100);
+
+        return null;
+     }
+ 
 
   const handleFeaturedSubmit = async (e) => {
     e.preventDefault();
@@ -153,15 +158,22 @@ const Dashboard = () => {
   if (session.status === "authenticated") {
     return (
       <div className={styles.container}>
-        <head>
-          <title>Gemini Dashboard</title>
-        </head>
+        <>
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>Gjemini Dashboard</title>
+          </Helmet>
+        </>
         <h1 className={styles.sectionTitle}>Your Featured Projects</h1>
         <div className={styles.wrapper}>
           <div className={styles.uploadedProjects}>
             {featuredData?.map((item) => (
               <div className={styles.card} key={item._id}>
-                <Image src={item.image} fill={true}></Image>
+                <Image
+                  src={item.image}
+                  fill={true}
+                  alt={`Image of ${item.title}`}
+                ></Image>
                 <div className={styles.cardContent}>
                   <h2>{item.title}</h2>
                   <p>{item.subTitle}</p>
@@ -210,7 +222,11 @@ const Dashboard = () => {
           <div className={styles.uploadedProjects}>
             {content?.map((item) => (
               <div className={styles.card} key={item._id}>
-                <Image src={item.image} fill={true}></Image>
+                <Image
+                  src={item.image}
+                  fill={true}
+                  alt={`Image of ${item.title}`}
+                ></Image>
                 <div className={styles.cardContent}>
                   <h2>{item.title}</h2>
                   <p>{item.subTitle}</p>
@@ -240,8 +256,14 @@ const Dashboard = () => {
                 required
               />
 
-              <select name="" id="" className={styles.userInput} required>
-                <option value="" disabled selected>
+              <select
+                name=""
+                id=""
+                className={styles.userInput}
+                defaultValue={"DEFAULT"}
+                required
+              >
+                <option value="DEFAULT" disabled>
                   Select Project Category
                 </option>
                 {data?.map((item) => (
@@ -269,7 +291,11 @@ const Dashboard = () => {
           <div className={styles.uploadedProjects}>
             {categoryData?.map((item) => (
               <div className={styles.card} key={item._id}>
-                <Image src={item.image} fill={true}></Image>
+                <Image
+                  src={item.image}
+                  fill={true}
+                  alt={`Image of ${item.category}`}
+                ></Image>
                 <div className={styles.cardContent}>
                   <h2>{`${item.category}s`}</h2>
                   <p>{item.subTitle}</p>

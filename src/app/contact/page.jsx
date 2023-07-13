@@ -1,10 +1,19 @@
+"use client"
+
 import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
+import { Helmet } from "react-helmet";
 
 const Contact = () => {
   return (
     <div className={styles.container}>
+      <>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Gjemini Contact</title>
+        </Helmet>
+      </>
       <div className={styles.headingContainer}>
         <div className={styles.cube}></div>
         <div className={styles.cube}></div>
@@ -25,16 +34,21 @@ const Contact = () => {
             src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d2382.455760767258!2d120.81868999422541!3d14.874910633337624!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sph!4v1688284165870!5m2!1sen!2sph"
             width={600}
             height={450}
-            allowfullscreen=""
+            allowFullScreen=""
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
+            referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
 
         <div className={styles.flexContainer}>
           <div className={styles.location}>
             <div className={styles.details}>
-              <Image src="/placeholder.png" width={32} height={32} alt="pin icon"></Image>
+              <Image
+                src="/placeholder.png"
+                width={32}
+                height={32}
+                alt="pin icon"
+              ></Image>
               <div>
                 <h4>Address</h4>
                 <p>Looban Pinagbakahan Malolos City Bulacan</p>
@@ -42,7 +56,12 @@ const Contact = () => {
             </div>
 
             <div className={styles.details}>
-              <Image src="/phone-call.png" width={32} height={32} alt="phone icon"></Image>
+              <Image
+                src="/phone-call.png"
+                width={32}
+                height={32}
+                alt="phone icon"
+              ></Image>
               <div>
                 <h4>Phone</h4>
                 <p>09956441943</p>
@@ -50,7 +69,12 @@ const Contact = () => {
             </div>
 
             <div className={styles.details}>
-              <Image src="/email.png" width={32} height={32} alt="email icon"></Image>
+              <Image
+                src="/email.png"
+                width={32}
+                height={32}
+                alt="email icon"
+              ></Image>
               <div>
                 <h4>Email</h4>
                 <p>torralbaalexisjoseph@gmail.com</p>

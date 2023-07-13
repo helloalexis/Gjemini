@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { Helmet } from "react-helmet";
 
 export const metadata = {
   title: "Gemini Projects",
@@ -22,11 +23,16 @@ async function getData() {
 }
 
 const Category = async ({ searchParams }) => {
-  console.log(searchParams)
   const data = await getData();
 
   return (
     <div className={styles.container}>
+      <>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Gjemini Projects</title>
+        </Helmet>
+      </>
       <div className={styles.galleryContainer}>
         {data?.map((item) => {
           if (
@@ -34,11 +40,14 @@ const Category = async ({ searchParams }) => {
           ) {
             return (
               <div className={styles.card} key={item._id}>
-                <Image src={item.image} fill={true} alt={`Image of ${item.title}`}></Image>
+                <Image
+                  src={item.image}
+                  fill={true}
+                  alt={`Image of ${item.title}`}
+                ></Image>
                 <div className={styles.cardContent}>
                   <h3>{item.title}</h3>
                   <p>{item.subTitle}</p>
-              
                 </div>
               </div>
             );

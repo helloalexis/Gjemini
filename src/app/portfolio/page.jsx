@@ -4,11 +4,8 @@ import React, { useRef } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { Helmet } from "react-helmet";
 
-export const metadata = {
-  title: "Gemini Project Category",
-  description: "This is Project Category Page",
-};
 
 const Portfolio = () => {
   const wrapperRef = useRef();
@@ -34,6 +31,12 @@ const Portfolio = () => {
 
   return (
     <div className={styles.container}>
+      <>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Gjemini Project Categories</title>
+        </Helmet>
+      </>
       <div className={styles.headingContainer}>
         <div className={styles.cube}></div>
         <div className={styles.cube}></div>
@@ -52,7 +55,11 @@ const Portfolio = () => {
         <div className={styles.scrollingWrapper} ref={wrapperRef}>
           {data?.map((item) => (
             <div className={styles.card} key={item._id} ref={cardRef}>
-              <Image src={item.image} fill={true} alt={`Image of ${item.category}`}></Image>
+              <Image
+                src={item.image}
+                fill={true}
+                alt={`Image of ${item.category}`}
+              ></Image>
               <div className={styles.cardContent}>
                 <h3>{`${item.category}s`}</h3>
                 <p>{item.subTitle}</p>

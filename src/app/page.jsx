@@ -5,11 +5,8 @@ import Hero from "public/hero-img.jpg";
 import Link from "next/link";
 import React, { useRef } from "react";
 import useSWR from "swr";
+import {Helmet} from "react-helmet"
 
-export const metadata = {
-  title: "Gemini Home",
-  description: "This is Home Page",
-};
 
 const Home = () => {
   const msgRef = useRef();
@@ -43,6 +40,13 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
+      <>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Gjemini Home</title>
+        </Helmet>
+      </>
+
       <div className={styles.heroSection}>
         <div className={styles.heroFlexContainer}>
           <div className={styles.heroTitleContainer}>
