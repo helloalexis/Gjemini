@@ -7,11 +7,6 @@ import useSWR from "swr";
 import Image from "next/image";
 import { Helmet } from "react-helmet";
 
-export const metadata = {
-  title: "Gemini Dashboard",
-  description: "This is Dashboard Page",
-};
-
 const Dashboard = () => {
   const router = useRouter();
   const session = useSession();
@@ -43,18 +38,17 @@ const Dashboard = () => {
       });
   }, []);
 
-   if (session.status === "loading") {
-       return <p>loading...</p>;
-     }
+  if (session.status === "loading") {
+    return <p>loading...</p>;
+  }
 
-     if (session.status === "unauthenticated") {
-        setTimeout(() => {
-          router?.push("/login");
-        }, 100);
+  if (session.status === "unauthenticated") {
+    setTimeout(() => {
+      router?.push("/login");
+    }, 100);
 
-        return null;
-     }
- 
+    return null;
+  }
 
   const handleFeaturedSubmit = async (e) => {
     e.preventDefault();
